@@ -41,14 +41,14 @@ O build estático fica em `dist/`.
 1. Importe `https://github.com/iwerry/OmniRecruit` na Vercel.
 2. Escolha o preset **Vite**.
 3. Build command: `npm run build`.
-4. Output directory: `dist`.
+4. Output directory: `dist` (também definido em `vercel.json`).
 5. O fluxo client-side do Puter não requer uma chave de IA própria no frontend.
 6. Após o deploy, valide login, chat, voz, câmera e persistência com sua conta Puter.
 
 Não coloque segredos no código cliente. Futuras APIs próprias devem manter credenciais em funções server-side.
 
 ## Integração Puter e privacidade
-O SDK é carregado pelo script oficial incluído em `index.html`. O app verifica a sessão com `puter.auth.isSignedIn()`, chama `puter.auth.signIn()` e tenta obter o perfil via `puter.auth.getUser()`. O chat usa `puter.ai.chat`; a análise visual tenta `puter.ai.img2txt` quando disponível e tem fallback multimodal. Compatibilidade de assinatura/modelo deve ser validada no navegador com o SDK atual. O histórico usa KV quando a API estiver disponível.
+O SDK é carregado pelo script oficial incluído em `index.html`. O app verifica a sessão com `puter.auth.isSignedIn()`, chama `puter.auth.signIn()` e tenta obter o perfil via `puter.auth.getUser()`. O chat usa `puter.ai.chat`; a análise visual envia um único quadro ao fluxo multimodal de chat, com instruções explícitas para comentar apenas elementos observáveis do ambiente. Compatibilidade de assinatura/modelo deve ser validada no navegador com o SDK atual. O histórico usa KV quando a API estiver disponível.
 
 A câmera não inicia automaticamente: é necessário abrir o módulo, consentir e ativá-la. O app envia uma captura estática, não um fluxo contínuo. A análise deve se limitar a iluminação, enquadramento, fundo e vestuário visível; não deve inferir identidade, saúde, personalidade ou empregabilidade.
 
