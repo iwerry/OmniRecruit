@@ -13,6 +13,7 @@ export default function App() {
  async function signIn(){try{setAuthBusy(true);await window.puter.auth.signIn();const u=await window.puter.auth.getUser();setUser(u);setNotice('');}catch(e){setNotice(e.message||'Não foi possível entrar pelo Puter.');}finally{setAuthBusy(false);}}
  async function signOut(){try{await window.puter.auth.signOut();}catch{}setUser(null);}
  async function sendMessage(text, options={}) {
+  if(!user){setNotice('Entre com sua conta Puter para iniciar uma conversa com a IA.');return;}
   const next=[...messages,{id:Date.now().toString(),role:'user',content:text}];setMessages(next);setBusy(true);setAvatarState('thinking');setNotice('');
   try {
    const p=window.puter;if(!p?.ai?.chat)throw new Error('SDK ou IA do Puter indisponível. Confira a conexão e tente novamente.');
