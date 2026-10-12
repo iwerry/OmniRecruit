@@ -64,7 +64,7 @@ body{background:#080c0d;color:var(--text)}
 .avatar-offline .orb-particle{opacity:.12;box-shadow:none;animation:none}
 .avatar-loading .orb-particle{animation-duration:1.1s}
 @keyframes particle-breathe{0%,100%{translate:0 0;scale:.8}50%{translate:0 -5px;scale:1.25}}
-@media(max-width:760px){.orb-particle{top:46%;--radius:calc(var(--radius) * .76)}}
+@media(max-width:760px){.orb-particle{top:46%}}
 @media(prefers-reduced-motion:reduce){.orb-particle{animation:none!important}}
 
 /* Conversation history interactions */
