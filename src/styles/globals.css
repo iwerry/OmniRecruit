@@ -78,3 +78,12 @@ body{background:#080c0d;color:var(--text)}
 .session-delete:hover{background:#30201d;border-color:#60403a;color:#ffb6a9}
 button:focus-visible,a:focus-visible,textarea:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #a4f0d2;outline-offset:3px}
 @media(max-width:760px){.session-delete{opacity:1}.session-row .session-link{font-size:11px}}
+
+/* Optional browser speech input */
+.voice-button{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border:1px solid #34473c;border-radius:11px;background:#17221b;color:#b7d7c3;transition:background .18s,border-color .18s,color .18s}
+.voice-button:hover:not(:disabled){background:#213529;border-color:#638a72;color:#e2f8e9}
+.voice-button.is-listening{background:#382a1a;border-color:#e9c98b;color:#f3d7a0;animation:voice-pulse 1.4s ease-in-out infinite}
+.voice-notice{margin:0 0 8px;color:#e9c98b;font-size:11px;line-height:1.6}
+@keyframes voice-pulse{50%{box-shadow:0 0 0 4px rgba(233,201,139,.12)}}
+@media(max-width:760px){.voice-button{width:35px;height:35px;flex-basis:35px}}
+@media(prefers-reduced-motion:reduce){.voice-button.is-listening{animation:none}}
