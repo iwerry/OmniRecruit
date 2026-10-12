@@ -72,12 +72,15 @@ src/
   styles/globals.css
 ```
 
-## Próximas etapas
-1. Executar build e corrigir eventuais incompatibilidades do SDK Puter.
-2. Adicionar testes automatizados, lint e GitHub Actions.
-3. Persistir checklist e contexto de entrevista.
-4. Melhorar renderização Markdown, acessibilidade e controles de voz.
-5. Validar multimodalidade e histórico na conta Puter antes de produção.
+## Qualidade e validação
+- Testes unitários nativos com `node --test` para resposta da IA, idiomas de voz e limites da análise visual.
+- GitHub Actions executa `npm test` e `npm run build` em pushes e pull requests para `main`.
+- O status do pipeline precisa ser conferido no GitHub; os commits, por si só, não significam que o build passou.
+
+## Limitações conhecidas antes de produção
+- O SDK Puter, login, chat multimodal e KV precisam de validação real no navegador com uma conta autorizada.
+- O histórico de conversas é persistido quando o KV está disponível; o checklist do LinkedIn ainda é mantido no estado do componente e reinicia ao recarregar.
+- A aplicação é um protótipo funcional em evolução, não um sistema de recrutamento validado nem uma ferramenta de avaliação automatizada de candidatos.
 
 ## Licença
 A definir pelo mantenedor.
