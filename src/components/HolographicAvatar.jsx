@@ -21,13 +21,13 @@ const particles = Array.from({ length: 46 }, (_, index) => ({
 export default function HolographicAvatar({ state = 'idle' }) {
   const current = states[state] || states.idle;
   const Icon = current.icon;
-  return <div className={\`avatar-stage avatar-\${state}\`} aria-label={current.label}>
+  return <div className={'avatar-stage avatar-' + state} aria-label={current.label}>
     <div className="orb-field" aria-hidden="true">
       {particles.map(particle => <i key={particle.id} className="orb-particle" style={{
-        '--angle': \`\${particle.angle}deg\`,
-        '--radius': \`\${particle.radius}px\`,
-        '--size': \`\${particle.size}px\`,
-        '--delay': \`\${particle.delay}s\`,
+        '--angle': particle.angle + 'deg',
+        '--radius': particle.radius + 'px',
+        '--size': particle.size + 'px',
+        '--delay': particle.delay + 's',
         '--opacity': particle.opacity,
       }} />)}
     </div>
