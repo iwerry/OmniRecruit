@@ -13,7 +13,7 @@ export default function ChatInterface({ messages, onSend, busy, onNewChat, langu
   if(!Recognition){setVoiceNotice('Ditado por voz não está disponível neste navegador. Você pode continuar digitando.');return;}
   try{
    const recognition=new Recognition();recognition.lang=getSpeechLanguage(language);recognition.continuous=false;recognition.interimResults=true;recognitionRef.current=recognition;setVoiceNotice('');setListening(true);
-   recognition.onresult=(event)=>{let transcript='';for(let i=event.resultIndex;i<event.results.length;i++)transcript+=event.results[i][0].transcript;setDraft(current=>{const prefix=current.trim();return prefix?(prefix+' '+transcript).trim():transcript.trim();});};
+   const startingDraft=draft.trim();recognition.onresult=(event)=>{let transcript='';for(let i=0;i<event.results.length;i++)transcript+=event.results[i][0].transcript;setDraft((startingDraft?startingDraft+' ':'')+transcript.trim());};
    recognition.onerror=(event)=>{setVoiceNotice(event.error==='not-allowed'?'Permita o uso do microfone nas configurações do navegador.':'Não foi possível reconhecer a fala. Tente novamente ou digite sua mensagem.');setListening(false);};
    recognition.onend=()=>setListening(false);recognition.start();
   }catch{setListening(false);setVoiceNotice('Não foi possível iniciar o microfone. Verifique a permissão do navegador.');}
