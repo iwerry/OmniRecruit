@@ -16,3 +16,5 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
 .camera-preview video.camera-inactive{display:none}.camera-preview video.camera-active{display:block}
+
+.recent-sessions{margin-top:24px;min-height:0;overflow:auto}.recent-sessions .nav-caption{margin-bottom:8px}.session-link{width:100%;display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid transparent;border-radius:8px;background:transparent;color:#8f99ad;text-align:left;font-size:10px}.session-link:hover{background:#ffffff09;color:#e8ebf3}.session-link svg{flex-shrink:0;color:var(--cyan)}.session-link span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}@media(max-width:760px){.recent-sessions{display:none}}
