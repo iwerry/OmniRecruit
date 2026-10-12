@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Check, Circle, Linkedin, Target } from 'lucide-react';
 
 const steps = [
@@ -10,7 +10,21 @@ const steps = [
 ];
 
 export default function LinkedInCoach({ onStart }) {
-  const [done, setDone] = useState([]);
+  const [done, setDone] = useState(() => {
+    try {
+      const saved = JSON.parse(window.localStorage.getItem('omni-recruit:linkedin-checklist') || '[]');
+      return Array.isArray(saved) ? saved.filter((index) => Number.isInteger(index) && index >= 0 && index < steps.length) : [];
+    } catch {
+      return [];
+    }
+  });
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('omni-recruit:linkedin-checklist', JSON.stringify(done));
+    } catch {
+      // The checklist remains usable when browser storage is disabled.
+    }
+  }, [done]);
   const progress = Math.round(done.length / steps.length * 100);
   return <section className="coach-panel">
     <div className="section-heading"><div className="feature-icon linkedin-icon"><Linkedin size={19}/></div><div><h2>LinkedIn Coach</h2><p className="muted">Um perfil mais claro, relevante e encontrável.</p></div></div>
