@@ -64,12 +64,16 @@ postcss.config.js
 src/
   main.jsx
   App.jsx
+  lib/
+    assistant.js
   components/
     ChatInterface.jsx
     HolographicAvatar.jsx
     CameraVisionModal.jsx
     LinkedInCoach.jsx
   styles/globals.css
+tests/
+  assistant.test.js
 ```
 
 ## Qualidade e validação
@@ -79,7 +83,7 @@ src/
 
 ## Limitações conhecidas antes de produção
 - O SDK Puter, login, chat multimodal e KV precisam de validação real no navegador com uma conta autorizada.
-- O histórico de conversas é persistido quando o KV está disponível; o checklist do LinkedIn ainda é mantido no estado do componente e reinicia ao recarregar.
+- O histórico de conversas é persistido quando o KV está disponível; o checklist do LinkedIn é salvo no armazenamento local do navegador.
 - A aplicação é um protótipo funcional em evolução, não um sistema de recrutamento validado nem uma ferramenta de avaliação automatizada de candidatos.
 
 ## Licença
